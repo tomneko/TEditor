@@ -1,0 +1,648 @@
+TEditor version up history
+
+ver 1.69 2000/11/30 -------------------------------------------------
+■ バグ
+・DrawUnderline, HideUnderline メソッドでコンパイルエラーが出たバグを
+  修正した
+
+■ 改良
+・TEditorStrings.LoadFromFile で、unix などで作成された #10 のみを
+  改行文字として扱うファイルも読み込めるようにした。
+
+ver 1.68 2000/11/24 -------------------------------------------------
+■ バグ
+・折り返し表示するための文字列リスト全体を処理するメソッドのバグを修
+  正した
+  TEditorScreenStrings.WrapLines メソッド
+
+■ 改良
+・TEditorProp.AssignTo の動作を改善した。
+
+ver 1.67 2000/11/01 -------------------------------------------------
+■ バグ
+・折り返し表示するための文字列分割メソッドのバグを修正した
+  TEditorScreenStrings.StrToWrapList メソッド
+
+ver 1.66 2000/10/12 -------------------------------------------------
+■ バグ
+・WordBreak 処理の不具合によって undo, redo 実行時にリストエラーが発生
+  していたバグを修正した。
+■ 改良
+・Delphi4 以降 TControl.DefaultHandler メソッドが public になったこと
+  へ対応した。
+  
+ver 1.65 2000/07/21 -------------------------------------------------
+■ バグ
+・リストエラーが出るバグを修正した InitBrackets メソッド
+
+■ 改良
+・描画ロジックを改善した。
+・PosTokenString メソッドの返値取得方法を改善した
+
+ver 1.64 2000/07/16 -------------------------------------------------
+■ バグ
+・実行時に View.Brackets を更新するとエラーになっていたバグを修正
+・View.Brackets に指定された文字列を編集した時、描画が追随しない
+  バグを修正
+・[EOF] マークの描画が不正になるバグを修正
+
+■ 改良
+・Undo, Redo を実行する際の描画の静粛性を向上させた
+
+ver 1.63 2000/07/14 -------------------------------------------------
+■ 新機能
+・SelTabIndent, SelTabUnIndent メソッドを実装
+
+■ バグ
+・一部のメッセージハンドラで ReadOnly プロパティを無視して文字列を更新
+  していたバグを修正
+・[EOF] 上で Ctrl + ↑↓が機能しなかったバグを修正
+・SelIndent, SelUnIndent 後に選択開始位置が不正になっていたバグを修正
+  
+  矩形選択状態で上記メソッドを実行すると、キャレットが全角２バイト目
+  に入る場合があることも判明していますが、特に実害は出ないと判断する
+  ことにしました。どうしても不安な方は、CleanSelection メソッドの最後
+  に、Col := FCol; の１行を追加して下さい。
+
+■ 改良
+・SelIndent, SelUnIndent の仕様を改良し、タブ文字も扱えるようになった
+・SetScrollBars メソッド内での RecreateWnd メソッド呼び出しをやめて
+  ShowScrollBar(Handle, ... の形にした。
+・表示可能文字列長を１，０００文字とし、横スクロールの限界値をこれに
+  対応した
+・描画の静粛性が向上した
+・TEditorScreenStrings.InitBrackets の仕様が変わり、おおよそ見えて
+  いる部分だけを処理するようになったので、LoadFromFile の処理速度が
+  向上した。
+・TEditorParser の仕様が変わり、メモリ節約＆高速化が計られた。
+
+ver 1.62 2000/05/10 -------------------------------------------------
+■ バグ
+・ver 1.61 で、キャレットが画面に定着する場合があった不具合を改善
+・今回の ver 1.62 を TEditor 安定版として公開し続けることにします。
+
+ver 1.61 2000/05/01 -------------------------------------------------
+■ 改良
+・$2000 バイト以上の長い１行文字列を含むファイル読み込みへの対応
+・フォーカスの再入によるキャレット位置へのスクロールを回避
+・スクロールバーをクリックしてもフォーカスが移動しないようにした
+・スクロールによってキャレットがマージン内に入る現象を回避した
+
+■ 新機能
+・toBracket 対応のメソッド群を実装した
+
+  procedure TEditor.SelectTokenBracketFromCaret;
+  procedure TEditor.SelectTokenBracketFromPos(Pos: TPoint);
+  function TEditor.TokenBracketFromCaret: Char;
+  function TEditor.TokenBracketFromPos(Pos: TPoint): Char;
+  function TEditor.TokenStringBracketFromCaret: String;
+  function TEditor.TokenStringBracketFromPos(Pos: TPoint): String;
+
+ver 1.60 2000/04/23 -------------------------------------------------
+■ 新機能
+・EM_ 系のメッセージハンドラを実装した。
+
+■ 改良
+・UrlChars に '+' を追加した
+・[EOF] 以降での Ctrl + ←→を無効化した
+
+ver 1.54 2000/04/04 -------------------------------------------------
+■ 改良
+・選択領域をドラッグする際、コントロールキー押し下げるとマウスカーソ
+  ルが変わる仕様にした。Caret.Cursors.DragSelCopyCursor プロパティが
+  追加されています。
+・エスケープキーで選択領域のドラッグを中断出来る仕様にした。
+
+ver 1.53 2000/03/29 -------------------------------------------------
+■ 改良
+・選択領域ドラッグの仕様を変更し、左ボタンを押し下げた状態から、数ピク
+  セルドラッグされた時点で開始されるようになった。
+・マウスで選択処理を行う時にキー入力を受け付けない仕様にした。
+・マウスによる選択やドラッグ時に上方向にもスクロールするようにした。
+・OnMouseMove イベントハンドラでマウスカーソル変更処理を行う場合の
+  不具合を解消した。
+
+■ 新しい型・メソッド・プロパティ
+・TEditorSelDragState 型
+・TEditorMouseCursorState 型
+・CancelSelDrag メソッド
+・CursorState プロパティ
+・Caret.AutoCursor プロパティ
+・WM_CLEAR, WM_COPY, WM_CUT, WM_PASTE メッセージハンドラの実装
+
+ver 1.52 2000/03/23 -------------------------------------------------
+■ 新機能
+・選択領域の文字列をマウスドラッグで移動する際のマウスカーソルを指定
+  出来るようにした。Caret.Cursors プロパティが増えています。
+・TEditorCaret.SelDragMode プロパティによって、選択文字列のドラッグ＆
+  ドロップを実装出来る仕様になった。
+・レフトマージン内のマウスカーソルを指定出来るようになった。
+  Caret.Cursors.LeftMarginCursor プロパティ
+・レフトマージンをクリックすることで、対象１行文字列を選択出来るように
+  なった。
+  
+■ 改良
+・選択文字列のドラッグ中に右クリックするとポップアップメニューが
+  出てしまっていた不具合を解消した
+    
+ver 1.51 2000/03/12 -------------------------------------------------
+■ 改良
+・選択領域のマウスドラッグ移動の仕様を改善し、文字列終端以降へも移動
+  出来るようにした。
+  
+ver 1.50 2000/03/11 -------------------------------------------------
+■ 新機能
+・選択領域の文字列をマウスドラッグで移動出来るようにした。
+■ 改良
+・キャレットを縦移動する際、Caret.InTab プロパティ値が False でもタブ
+  文字にキャレットが入ってしまう仕様を改善し、Caret.Intab プロパティ
+  値を遵守する仕様にした。
+
+ver 1.45 2000/03/02 -------------------------------------------------
+■ バグ
+・[EOF] 以降を選択した状態で SelectionMode プロパティ値を変更する
+  と発生していたエラーを修正した。
+■ 改良
+・マウスによるキャレット位置指定処理を改善した。
+・タブ文字をマウスドラッグによって選択する際の動作を改善した。
+
+ver 1.44 2000/02/04 -------------------------------------------------
+■ バグ
+・Clear メソッドでキャレット位置が不正になるバグを修正
+・その他、分割処理関連のロジックを見直した。
+
+ver 1.43 2000/01/30 -------------------------------------------------
+■ バグ
+・Brackets プロパティ値が設定されているとプロパティエディタが
+  開けなくなるバグを修正
+
+ver 1.42 2000/01/29 -------------------------------------------------
+■ バグ
+・画面分割時の Undo, Redo でキャレット位置が不正になるバグを修正
+・画面分割時に文字列を削除した場合、[EOF]マークが不正になるバグを修正
+
+ver 1.41 2000/01/27 -------------------------------------------------
+■ バグ
+・TEditorColors.Destroy, TUndoDataList.Clear, Delete にメモリーリーク
+  のバグがありました。ご指摘を頂いた DEKO さんに多謝。
+
+ver 1.40 2000/01/25 -------------------------------------------------
+■ 新機能
+・２画面分割・別窓での編集を実現するための ExchangeList メソッドを実装
+  し、文字列の更新・描画もこれに対応しました。
+  実際の画面分割・別窓編集には若干のコーディングが必要になります。
+  メソッド一発で分割されたりはしません。
+  
+ver 1.34 2000/01/18 -------------------------------------------------
+■ バグ
+・toUrl, toMail なトークンが折り返し表示された場合、正しく描画されなか
+  ったバグを修正。
+・動的に生成した場合、デフォルトのポップアップメニューが機能しなかった
+  バグを修正。
+  
+ver 1.33 2000/01/13 -------------------------------------------------
+■ バグ
+・ver 1.32 で PutStrintToLine メソッドの修正の他に加えた変更に致命的な
+  ミスがあったので、元に戻しました。
+
+ver 1.32 2000/01/13 -------------------------------------------------
+■ バグ
+・PutStringToLine メソッドのバグを修正(^^;)
+  選択状態から文字入力を行うと改行文字が１個増えるバグがありました。
+
+ver 1.31 2000/01/12 -------------------------------------------------
+■ バグ
+・タブ文字がある行で文字を入力する際の不具合を修正
+  
+    PutStringToLine メソッドのバグを修正しました。以前のバージョンに
+  あったタブ文字を上書きする際の不具合も解消されています。
+    また、上書きモードで、折り返し表示している行の後半に IME から長い
+  文字列を入力する時、次の行も上書きされるようになりました。
+  
+ver 1.30 2000/01/08 -------------------------------------------------
+■ バグ
+・ver1.24 にあったマウスで選択した後キーボードで選択領域の変更が
+  出来なかったバグを修正
+
+■ 新機能
+・矩形選択に対応した
+
+■ interface 部の変更点
+
+・削除
+
+  WMLButtonUp メッセージハンドラ
+  TMouseSelPosition 型宣言
+  
+・追加
+
+  CF_BOXTEXT 識別子
+  TEditorSelectionState 型宣言
+  TEditorSelectionMode 型宣言
+  SelectionMode プロパティ
+  OnSelectionModeChange イベント
+  SetSelTextBox メソッド
+
+ver 1.24 1999/12/20 -------------------------------------------------
+■ バグ
+・折り返し表示している行で文字列を入力すると、キャレット位置が
+  不正になる場合があったバグを修正。
+・コンパイラ指令を Delphi 5 に対応させたので、Delphi 4 から追加された
+  Anchors プロパティなどが Delphi 5 でも表示されるようにした。
+
+ver 1.23 1999/12/03 -------------------------------------------------
+■ バグ
+・[EOF] 以降を選択している場合、張り付けが出来なかったバグをフィックス
+■ 改良
+・選択状態から文字列を入力した際の Undo, Redo の動作を改善
+  
+ver 1.22 1999/12/01 -------------------------------------------------
+■ バグ
+・[EOF] 以降を選択して削除すると発生したエラーをフィックス
+■ 改良
+・選択文字列を置き換えた場合の Undo, Redo の動作を改善
+
+ver 1.21 1999/10/10 -------------------------------------------------
+■ 改良
+・D5 で実行時パッケージから、DsgnIntf ユニットが削除されたことへ対応した
+  （ hpropert.pas が増えました）
+・TEditorStrings.Clear メソッドで、明示的に UpdateWindow するようにした
+・フォーカスを持っている場合で且つ Lines.BeginUpdate した際の
+  文字列処理速度を改善した。
+・デフォルトポップアップメニューのキャプションを「貼り付け」にした
+  また、メニューアイテムの Enabled を ReadOnly プロパティに対応させた
+・TEditorParser の派生クラスを受け入れられる仕様とした。
+
+■ 新機能
+・Shift + Click で選択出来るようにした
+・TEditorBracketCollection に SameBkColor, SameColor, SameStyle メソッド
+  を新設した
+  
+■ バグ
+・Caret.AutoIndent and Caret.TabIndent で VK_RETURN を入力した際に
+  キャレット位置が不正になるバグを修正
+・VK_HOME, VK_END でスクロールさせた場合、画面へキャレットが焼き付く
+  バグを修正
+・[EOF] で Shift + VK_DOWN, 先頭行で Shift + VK_UP キー入力を
+  すると、アンダーラインが消えたままになるバグを修正
+
+ver 1.20 1999/09/23 -------------------------------------------------
+■ 改良
+  ・PosTokenString メソッドを複数行に渡る語句へ対応させた（引数に変化あり）
+■ 新機能
+  ・SelectTokenFromCaret メソッドを新設 // キャレット位置の語句を選択
+  ・SelectTokenFromPos メソッドを新設   // Pos 位置の語句を選択
+  ・SelectWordFromCaret メソッドを新設  // キャレット位置の１語を選択
+  ・SelectWordFromPos メソッドを新設    // Pos 位置の１語を選択
+  
+ver 1.12 1999/09/18 -------------------------------------------------
+■ 改良
+・スクロールバーによって、キャレットが消えた状態からフォーカスを失った
+  後、マウスで再入した場合の動作を改善した。
+■ 新機能
+・デフォルトのポップアップメニューを加えた
+
+ver 1.11 1999/09/09 -------------------------------------------------
+■ バグ
+・fsMDIChild フォーム上で利用する際、親フォームにあるコントロールとの
+  間で起こるフォーカス移動の不具合を修正。nifty:FDELPHI/MES/10/6452 で
+  Satobe さんにアドバイスを頂きました。感謝
+
+ver 1.10 1999/08/28 -------------------------------------------------
+
+■ バグ
+・Undo, Redo する際、文字列リストの Brackets 配列プロパティが更新され
+  ないバグを修正
+・「句読点のぶら下げ」の不具合を修正
+・文字列に変更が無くても BeginUpdate, EndUpdate を実行すると OnChange 
+  イベントが発生していたバグを修正
+・サンプルプロジェクトのバグを修正
+
+■ 改良
+・url の判別文字列に 'www.', '=', '?' を加えた
+・コンパイラ指令を追加した。{$V+,B-,X+,T-,P+,H+,J+}
+
+■ 新機能
+・View.Mail プロパティを追加        // メールアドレスを判別するしないフラグ
+・View.Colors.Mail プロパティを追加 // メールアドレスの描画色
+・Caret.KeepCaret プロパティを追加  // キャレット位置を保存するしないフラグ
+・SelIndent メソッドを追加          // 選択行のインデント
+・SelUnIndent メソッドを追加        // 選択行のアンインデント
+・OnSelectionChange イベントを追加  // 選択領域の変更を通知するイベント
+
+ver 1.00 1999/07/23 -------------------------------------------------
+
+■ 新機能
+・予約語・記号・文字列・数値・コメント領域・半角文字・
+  全角文字及び半角カタカナ・url を識別し、それぞれに、
+  背景色、文字色、フォントスタイルを指定出来るようになった
+・{ }, (* *), <!-- -->, asm end, つまり である, など、特定の文字列で
+  囲まれた領域を複数行に渡って別色表示出来るようになった。
+  
+■ published プロパティの変更
+
+・以下のプロパティは削除されました。
+  property DefaultDrawing: Boolean read FDefaultDrawing write SetDefaultDrawing;
+  property DisposeBlank: Boolean read FDisposeBlank write SetDisposeBlank;
+  property DrawAllWords: Boolean read FDrawAllWords write SetDrawAllWords;
+  property DelimDBCS: Boolean read FDelimDBCS write SetDelimDBCS;
+  property ReserveWordColor: Boolean read FReserveWordColor write SetReserveWordColor;
+  property ReserveWordFont: TFont read FReserveWordFont write SetReserveWordFont;
+
+・以下のプロパティは TEditorViewInfo の TEditorColors オブジェクトへ
+  移行されました。
+  property ReserveBkColor: TColor read FReserveBkColor write SetReserveBkColor;
+  property SelectBkColor: TColor read FSelectBkColor write FSelectBkColor;
+  property SelectFontColor: TColor read FSelectFontColor write FSelectFontColor;
+
+    ex Editor1.ReserveBkColor は 
+       Editor1.View.Colors.Reserve.BkColor となります。
+  
+・以下のプロパティは TEditorCaret オブジェクトへ移行されました。
+  property CaretAutoIndent: Boolean read FCaretAutoIndent write FCaretAutoIndent;
+  property CaretFree: Boolean read FCaretFree write SetCaretFree;
+  property CaretInTab: Boolean read FCaretInTab write FCaretInTab;
+  property CaretLockScroll: Boolean read FCaretLockScroll write FCaretLockScroll;
+  property CaretNextLine: Boolean read FCaretNextLine write FCaretNextLine;
+  property CaretStyle: TEditorCaretStyle read FCaretStyle write SetCaretStyle;
+  property PrevSpaceIndent: Boolean read FPrevSpaceIndent write FPrevSpaceIndent;
+  property SoftTab: Boolean read FSoftTab write FSoftTab;
+  property TabIndent: Boolean read FTabIndent write FTabIndent;
+  property TabSpaceCount: Integer read FTabSpaceCount write SetTabSpaceCount;
+
+    ex Editor1.CaretAutoIndent は Editor1.Caret.AutoIndent となります。
+
+・以下のプロパティは TEditorMargin オブジェクトへ移行されました。
+  property CharacterMargin: Integer read FCharacterMargin write SetCharacterMargin;
+  property TopMargin: Integer read FTopMargin write SetTopMargin;
+  property LeftMargin: Integer read FLeftMargin write SetLeftMargin;
+  property LineMargin: Integer read FLineMargin write SetLineMargin;
+
+    ex Editor1.LeftMargin は Editor1.Margin.Left となります。
+
+・以下のプロパティは TEditorMarks オブジェクトへ移行されました。
+  property EofMark: Boolean read FEofMark write SetEofMark;
+  property EofMarkColor: TColor read FEofMarkColor write SetEofMarkColor;
+  property RetMark: Boolean read FRetMark write SetRetMark;
+  property RetMarkColor: TColor read FRetMarkColor write SetRetMarkColor;
+  property UnderLine: Boolean read FUnderLine write SetUnderLine;
+  property UnderLineColor: TColor read FUnderLineColor write SetUnderLineColor;
+
+    ex Editor1.EofMark は Editor1.Marks.EofMark.Visible に、また
+       Editor1.EofMarkColor は Editor1.Marks.EofMark.Color となります。
+
+■ 削除された public メソッド
+  procedure StrToWordList(S: String; List: TStrings); // S をデリミタで切り分けた文字列を List に格納する
+
+■ 追加された public メソッド
+  function TokenFromCaret: Char;                     // キャレット位置の語句の種類を返す toBracket を返すことは無い
+  function TokenFromPos(Pos: TPoint): Char;          // 指定ポイントの語句の種類を返す toBracket を返すことは無い
+  function TokenStringFromCaret: String;             // キャレット位置の語句を返す（View.Bracets は無視される）
+  function TokenStringFromPos(Pos: TPoint): String;  // 指定ポイントの語句を返す（View.Bracets は無視される）
+  function WordFromCaret: String;                    // キャレット位置の１語を返す（View の各プロパティ設定は無視される）
+
+ver 0.63 1999/05/15 -------------------------------------------------
+
+■ バグ
+・Ｄ４用 HEditor4.dcu で終了時に「不正なポインタ操作」エラーが
+　出ていたバグを修正した。
+・MSIME95 を使用して全角スペースを入力するとキャレットが消えてしまう
+　現象を回避した。
+
+ver 0.62 1999/05/12 -------------------------------------------------
+
+■ バグ
+・選択領域を削除する際、改行文字が消えてしまうバグを修正。
+・Undo, Redo メソッド実行時、選択状態が解除されないバグを修正
+・追い出し処理で、全角文字が化けるバグを修正。
+・WrapOption プロパティの変化が反映されないバグを修正。
+・WordBreak 処理で、WrapByte に達すると追い出されていたバグを修正
+■ 改善
+・WordBreak 処理で、全角半角区切りを処理の対象に加えた。
+・TWrapOption メンバーから TStringList フィールドを削除し、
+  StrWrapList メソッドを高速化した。
+
+ver 0.61 1999/05/08 -------------------------------------------------
+
+■ バグ
+・OnDrawLine イベントが発生しない場合があったバグを修正
+・DeleteRow, Clear, Lines.Add, Insert, Put, Delete を選択状態から実行
+  した場合、選択状態が解除されないバグを修正
+・選択状態から SelStart := 0; が機能しなかったバグを修正
+・タブ文字を含む行での選択領域を削除する際、キャレット位置が不正になる
+  バグを修正
+・WordWrap, WrapByte プロパティ値の変更がスクロールポジションに反映
+  されていなかったバグを修正
+・動的に生成する際の「コントロールは親ウィンドゥを・・・」エラーへの対処
+
+■ 改善
+・WordWrap, WrapByte プロパティ値を変えても、OnChange イベントが発生
+  しない仕様に変更。
+・ＩＭＥ関連の描画を改善した
+・SetSelTextBuf の実装を変更し、Undo, Redo との相性を改善した
+・Windows.pas 程度の文字列データの貼り付け、Undo, Redo など、大量の
+  文字列一括処理を高速化した
+
+■ 変更
+・ListToFile, ListToStream メソッドを TEditor のメソッドとした
+・Delimiters プロパティから '_' を除外した
+・WrapByte プロパティが WrapOption.WrapByte となった。
+
+■ 新機能
+・WordWrap 機能を強化し、追い出し、句読点のぶら下げ、行頭禁則、行末禁則
+  英文ワードラップに対応した。
+・オートインデントを WordWrap に対応させた。
+・WM_GETTEXT, WM_SETTEXT, WM_GETTEXTLENGTH, メッセージハンドラを実装し、
+  GetTextBuf, SetTextBuf メソッドを有効なものとした。
+  これにより、フォームに貼り付ける際、Editor1 の文字列が Lines プロパ
+  ティに入るようになった。
+・StrToWrapList メソッドを public に移動
+・LeftScrollWidth プロパティを public に移動
+・FList.Count を参照する ListCount プロパティを新設
+・FList[n] を参照する ListString プロパティを新設
+・CaretLockScroll プロパティの新設
+
+ver 0.60 1999/02/22 -------------------------------------------------
+・選択状態でＩＭＥ入力しても、選択領域が削除されないバグを修正
+・全角文字を選択した状態で横スクロールさせるとレフトマージン部分にゴミ
+  が残るバグを修正
+・横スクロールした状態で且つ、[EOF] マーク直前にキャレットがある状態
+  から VK_BACK キーを入力して右スクロールした場合、[EOF]の一部がレフト
+  マージン内に描画されてしまうバグを修正
+・GetSelLength のバグを修正
+・VK_UP, VK_DOWN キーのリピート入力で２行スクロールする仕様に変更
+・オートインデントの仕様を変更
+  スペースを入力した後リターンキーを入力してもオートインデントされる
+  ようになった。
+　Delphi のコードエディタのような、上方のスペースに合わせたインデントを
+  行う・行わないを決める PrevSpaceIndent プロパティを新設
+・Paint を override する仕様に変わったので、設計時の不安定感が無くなった
+  nifty:FDELPHI/MES/10/05654 Satobe さん（JCG00336）のアドバイスを参考に
+  させて頂きました。
+・キャレットの居場所を確保するために余計な１行を追加する仕様を廃止した。
+  Row = Lines.Count な場合も発生する
+・WordWrap の実装
+  WordWrap, WrapByte プロパティの新設
+  DeleteRow, RowToLines, ColToChar, ListToFile, ListToStream メソッドの追加
+・published なプロパティが増えた
+  DragCursor, DragMode, OnDragDrop, OnDragOver, OnEndDrag, OnStartDrag
+  Delphi4 版ではさらに
+  Anchors, Constraints, DragKind, OnCanResize, OnEndDock, OnResize, 
+  OnStartDock
+
+ver 0.55 1999/01/07 -------------------------------------------------
+・選択領域の描画中に、ReserveWordColor プロパティの値を無視して
+　予約語を別色表示するバグを修正
+・LoadFromFile で $2000 バイト目に #10 があると余分な空白行が挿入
+  されてしまうバグを修正
+
+ver 0.54 1999/01/05 -------------------------------------------------
+・どんなフォントサイズでも、半角：全角＝１：２の比率で描画される仕様に
+  変更したので fsBold, fsItalicなフォントスタイルも使用可能になった
+  nifty:FDELPHI/MES/10/05453 Satobe さん（JCG00336）のアドバイスを参考に
+  させて頂きました。
+・VK_PRIOR, VK_NEXT によるスクロール時の静粛性を向上
+・連続スクロール時のキャレットのチラツキを抑制
+・選択領域を描画する際のチラツキを大幅に抑制
+・実行時にフォントを変更してもキャレットサイズが変わらなかったバグを
+  修正
+・キャレットが移動したとき、キャレット幅を、半角・全角文字幅に合わせる
+  仕様に変更
+・選択状態を解除したときアンダーラインが描画されなかったバグを修正
+・マウスによるキャレット移動を行った時、マウスポインタが微妙に移動すると
+  選択状態に入り、アンダーラインが表示されない状態になる不具合を修正
+・LoadFromFile で #26 を読み込まないように変更
+・StrToWordList のバグを修正
+・CharacterMargin プロパティの追加
+・DrawTextRect メソッドの追加
+・SelStrPosition プロパティの追加
+・SelDrawPosition プロパティの追加
+・Selected プロパティの追加
+・ReserveWordFont プロパティの追加
+☆ReserveFontColor プロパティの削除
+
+ver 0.53 1998/11/27 -------------------------------------------------
+・たま～に描画されない部分が出現するバグを修正
+・Delphi 4 用の heditor4.dcu を同梱
+
+ver 0.52 1998/11/23 -------------------------------------------------
+・空白行に改行マークが描画されないバグを修正
+・アンダーラインを表示する場合は 行間が１ドット増す仕様に変更
+・描画時の静粛性を向上（出来たと思う^^;）
+・[EOF] マークの描画機能の追加
+・Ctrl + ← → によるデリミタ間の移動機能の追加
+・Ctrl + ↑ ↓ による上下スクロール機能の追加
+・DelimDBCS プロパティの追加（全角半角の切り替わりを区切りとして扱う）
+・CharFromPos メソッドの追加
+・StrInfoFromPos メソッドの追加
+・WordFromPos メソッドの追加
+・StrToWordList メソッドの追加
+・ExpandTab メソッドの公開
+・OnTopRowChange イベントの追加
+・OnTopColChange イベントの追加
+・ReserveBkColor プロパティの追加（復活^^;）
+・DefaultDrawing プロパティの追加
+・DrawAllWords プロパティの追加
+・OnBeforeDrawWord イベントの追加
+・OnDrawLine イベントの追加
+
+★DrawStyle プロパティの削除
+★OnDrawWord イベントの削除
+
+ver 0.51 1998/11/08 -------------------------------------------------
+・梱包ファイル内容に手違いがあったので再アップロード
+
+ver 0.50 1998/11/08 -------------------------------------------------
+・レフトマージン内に改行マークが描画されてしまうバグを修正
+・文字列後端より右の空白部分に文字入力する場合、それまでの改行マークが
+  取り残されるバグを修正
+・Clear メソッドの不具合を修正
+・LineMargin プロパティの追加
+・TopMargin プロパティの追加
+・DrawStyle プロパティ、OnDrawWord イベントハンドラの追加
+  によって、オーナードローが可能になりました＼(^o^)／
+  
+ver 0.43 1998/11/01 -------------------------------------------------
+・画面スクロール時の描画の不具合（結構致命的でした^^;）を修正
+・DeleteSelection, SetSelTextBuf の高速化
+  Undo, Redo に対応した分遅くなっていましたので少し改善しました。
+・サンプルプロジェクトのバグをいくつか^^;修正
+
+ver 0.42 1998/10/30 -------------------------------------------------
+・Undo, Redo 時の描画の不具合を修正
+・改行マークの描画機能を持たせました。RetMark プロパティ
+・アンダーラインの描画機能を持たせました。UnderLine プロパティ
+・予約語の背景色指定機能を（ReserveBkColor プロパティ）を削除しました。
+　ver 0.42 をインストール後、既存のプロジェクトファイルを開くと
+  ReserveBkColor プロパティが見つかりませんのエラーになると思いますが
+  無視するボタンをクリックしてください。
+・ver 0.41 は予約語の背景色描画における不具合を修正したものでしたが
+　描画スピードが不満足な出来だったため、公開せずに結局 ReserveBkColor
+  プロパティを削除してしまいました。
+
+ver 0.40 1998/10/24 -------------------------------------------------
+・Default = True なボタンがあると、VK_RETURN キーが入力出来なくなる
+  不具合を修正
+・ClearSelection の実装を「選択状態の解除」から「選択領域の削除」に変更
+・文字列保持オブジェクト(TEditorStrings)の宣言を interface 部に移動
+・Delimiters プロパティの追加
+
+☆ Undo オブジェクトを実装しました
+・EditorUndoObj プロパティの追加
+・UndoListMax プロパティの追加
+・CanRedo メソッドの追加
+・CanUndo メソッドの追加
+・Undo メソッドの追加
+・Redo メソッドの追加
+
+ver 0.32  1998/08/19 -------------------------------------------------
+・SetSelLength の不具合を修正
+・DeleteSelection の高速化
+・SetSelTextBuf の高速化
+・TopRow = 0 の状態で、VK_PRIOR が入力されたとき、キャレットを最初の行へ
+  移動するように変更
+・CaretFree = False 時にタブ文字を含む行でのキャレット移動の不具合を修正
+・CaretFree = False に設定されると DisposeBlank = False となるように変更
+  これによって、最後尾に空白(#$20)を入力出来なかった不具合を解消
+・タブ文字の展開数をカラム位置によって調節するように変更
+・TabIndent プロパティの追加
+・ClearSelection メソッドの追加
+・CopyToClipboard メソッドの追加
+・CutToClipboard メソッドの追加
+・PasteFromClipboard メソッドの追加
+・SelectAll メソッドの追加
+
+ver 0.31  1998/08/16 -------------------------------------------------
+・32,767 + 画面表示可能行数以上のスクロールが出来なかった不具合を修正
+・予約語を入力した際の描画の不具合を修正
+・キャレットが全角文字に入った際の位置調節の不具合を修正
+・全角文字に半角文字を上書きした際の不具合を修正
+・ファイル読み込みの高速化（nifty:FDELPHI/MES/10/04498 大石　剛司 さんの
+  アドバイスを参考にさせていただきました。）
+
+ver 0.30  1998/08/09  -------------------------------------------------
+・横スクロール時画面上部がスクロールされないバグを修正
+・タブ文字に対応
+・SoftTab プロパティの追加
+・CaretInTab プロパティの追加
+・StrIndex メソッドの追加
+・CreateDelimiters メソッドの追加
+・RowHeight プロパティの追加
+・ColWidth プロパティの追加
+・Canvas プロパティの追加
+
+ver 0.21  1998/07/31  -------------------------------------------------
+・ver 0.20 の上書き時のハゲしいチラツキ(^^;)を抑制
+・SetSelLength の不具合を修正
+・SetSelTextBuf の不具合を修正
+・上書きキャレットを統一
+・ReadOnly プロパティでの手抜き(^^;)をきちんと実装
+
+ver 0.20  1998/07/27  -------------------------------------------------
+・Modified プロパティの追加
+・DiaposeBlank プロパティの追加
+・LineDraw の改良によって入力時のチラツキを抑制
+
+ver 0.10  1998/07/25  -------------------------------------------------
+・初版
+

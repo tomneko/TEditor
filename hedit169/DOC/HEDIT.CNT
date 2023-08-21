@@ -1,0 +1,292 @@
+:BASE HEdit.hlp>main
+:Title TEditor
+:Index TEditor=HEdit.hlp
+1 Doumo =Doumo>main
+1 TEditor
+2 TEditor コンポーネント =About_TEditor>main
+2 画面構成 =TEditor_Layout>main
+2 矩形選択処理について =About_BoxSelection>main
+2 MailChars, UrlChars 変数 =MailCharsUrlChars>main
+2 独自のマウスカーソル =About_LoadCursor>main
+2 選択領域のマウスドラッグ =About_SelMove>main
+2 プロパティ
+3 Caret =TEditor_Caret>main
+3 Col =TEditor_Col>main
+3 ColCount =TEditor_ColCount>main
+3 ColWidth =TEditor_ColWidth>main
+3 CursorState =TEditor_CursorState>main
+3 Delimiters =TEditor_Delimiters>main
+3 EditorUndoObj =TEditor_EditorUndoObj>main
+3 FontHeight =TEditor_FontHeight>main
+3 LeftScrollWidth =TEditor_LeftScrollWidth>main
+3 Lines =TEditor_Lines>main
+3 ListBracket =TEditor_ListBracket>main
+3 ListCount =TEditor_ListCount>main
+3 ListString =TEditor_ListString>main
+3 Margin =TEditor_Margin>main
+3 Marks =TEditor_Marks>main
+3 Modified =TEditor_Modified>main
+3 OverWrite =TEditor_OverWrite>main
+3 ReserveWordList =TEditor_ReserveWordList>main
+3 Row =TEditor_Row>main
+3 RowCount =TEditor_RowCount>main
+3 RowHeight =TEditor_RowHeight>main
+3 SelDrawPosition =TEditor_SelDrawPosition>main
+3 Selected =TEditor_Selected>main
+3 SelectionMode =TEditor_SelectionMode>main
+3 SelLength =TEditor_SelLength>main
+3 SelStart =TEditor_SelStart>main
+3 SelStrPosition =TEditor_SelStrPosition>main
+3 SelText =TEditor_SelText>main
+3 TopCol =TEditor_TopCol>main
+3 TopRow =TEditor_TopRow>main
+3 UndoListMax =TEditor_UndoListMax>main
+3 View =TEditor_View>main
+3 WordWrap =TEditor_WordWrap>main
+3 WrapOption =TEditor_WrapOption>main
+2 メソッド
+3 CanRedo =TEditor_CanRedo>main
+3 CanUndo =TEditor_CanUndo>main
+3 CancelSelDrag =TEditor_CancelSelDrag>main
+3 CanSelDrag =TEditor_CanSelDrag>main
+3 CharFromPos =TEditor_CharFromPos>main
+3 Clear =TEditor_Clear>main
+3 CleanSelection =TEditor_CleanSelection>main
+3 ClearSelection =TEditor_ClearSelection>main
+3 ColToChar =TEditor_ColToChar>main
+3 CopySelection =TEditor_CopySelection>main
+3 CopyToClipboard =TEditor_CopyToClipboard>main
+3 CutToClipBoard =TEditor_CutToClipBoard>main
+3 DeleteRow =TEditor_DeleteRow>main
+3 DrawTextRect =TEditor_DrawTextRect>main
+3 ExchangeList =TEditor_ExchangeList>main
+3 ExpandTab =TEditor_ExpandTab>main
+3 GetSelTextBuf =TEditor_GetSelTextBuf>main
+3 GetTextLen =TEditor_GetTextLen>main
+3 IsSelectedArea =TEditor_IsSelectedArea>main
+3 ListToFile =TEditor_ListToFile>main
+3 ListToStream =TEditor_ListToStream>main
+3 MoveSelection =TEditor_MoveSelection>main
+3 PasteFromClipboard =TEditor_PasteFromClipboard>main
+3 PosToRowCol =TEditor_PosToRowCol>main
+3 Redo =TEditor_Redo>main
+3 RowToLines =TEditor_RowToLines>main
+3 SelectAll =TEditor_SelectAll>main
+3 SelectTokenBracketFromCaret =TEditor_SelectTokenBracketFromCaret>main
+3 SelectTokenBracketFromPos =TEditor_SelectTokenBracketFromPos>main
+3 SelectTokenFromCaret =TEditor_SelectTokenFromCaret>main
+3 SelectTokenFromPos =TEditor_SelectTokenFromPos>main
+3 SelectWordFromCaret =TEditor_SelectWordFromCaret>main
+3 SelectWordFromPos =TEditor_SelectWordFromPos>main
+3 SelIndent =TEditor_SelIndent>main
+3 SelUnIndent =TEditor_SelUnIndent>main
+3 SelTabIndent =TEditor_SelTabIndent>main
+3 SelTabUnIndent =TEditor_SelTabUnIndent>main
+3 SetRowCol =TEditor_SetRowCol>main
+3 SetSelTextBox =TEditor_SetSelTextBox>main
+3 SetSelTextBuf =TEditor_SetSelTextBuf>main
+3 StrInfoFromPos =TEditor_StrInfoFromPos>main
+3 TokenBracketFromCaret =TEditor_TokenBracketFromCaret>main
+3 TokenBracketFromPos =TEditor_TokenBracketFromPos>main
+3 TokenFromCaret =TEditor_TokenFromCaret>main
+3 TokenFromPos =TEditor_TokenFromPos>main
+3 TokenStringBracketFromCaret =TEditor_TokenStringBracketFromCaret>main
+3 TokenStringBracketFromPos =TEditor_TokenStringBracketFromPos>main
+3 TokenStringFromCaret =TEditor_TokenStringFromCaret>main
+3 TokenStringFromPos =TEditor_TokenStringFromPos>main
+3 Undo =TEditor_Undo>main
+3 WordFromCaret =TEditor_WordFromCaret>main
+3 WordFromPos =TEditor_WordFromPos>main
+2 イベント
+3 OnCaretMoved =TEditor_OnCaretMoved>main
+3 OnChange =TEditor_OnChange>main
+3 OnDrawLine =TEditor_OnDrawLine>main
+3 OnSelectionChange =TEditor_OnSelectionChange>main
+3 OnSelectionModeChange =TEditor_OnSelectionModeChange>main
+3 OnTopColChange =TEditor_OnTopColChange>main
+3 OnTopRowChange =TEditor_OnTopRowChange>main
+2 型
+3 TDrawLineEvent =TDrawLineEvent>main
+3 TEditorCaretStyle =TEditorCaretStyle>main
+3 TEditorDragState =TEditorDragState>main
+3 TEditorDrawInfo =TEditorDrawInfo>main
+3 TEditorMouseCursorState =TEditorMouseCursorState>main
+3 TEditorRowAttribute =TEditorRowAttribute>main
+3 TEditorSelectionMode =TEditorSelectionMode>main
+3 TEditorSelectionState =TEditorSelectionState>main
+3 TEditorStrInfo =TEditorStrInfo>main
+3 TSelectedPosition =TSelectedPosition>main
+3 TSelectionChangeEvent =TSelectionChangeEvent>main
+3 TUndoData =TUndoData>main
+2 クラス
+3 TNotifyPersistent
+4 TNotifyPersistent =About_TNotifyPersistent>main
+4 メソッド
+5 BeginUpdate =TNotifyPersistent_BeginUpdate>main
+5 EndUpdate =TNotifyPersistent_EndUpdate>main
+4 イベント
+5 OnChange =TNotifyPersistent_OnChange>main
+3 TEditorCursors
+4 TEditorCursors =About_TEditorCursors>main
+4 プロパティ
+5 DefaultCursor =TEditorCursors_DefaultCursor>main
+5 DragSelCursor =TEditorCursors_DragSelCursor>main
+5 DragSelCopyCursor =TEditorCursors_DragSelCopyCursor>main
+5 InSelCursor =TEditorCursors_InSelCursor>main
+5 LeftMarginCursor =TEditorCursors_LeftMarginCursor>main
+3 TEditorCaret
+4 TEditorCaret =About_TEditorCaret>main
+4 プロパティ
+5 AutoCursor =TEditorCaret_AutoCursor>main
+5 AutoIndent =TEditorCaret_AutoIndent>main
+5 Cursors =TEditorCaret_Cursors>main
+5 FreeCaret =TEditorCaret_FreeCaret>main
+5 InTab =TEditorCaret_InTab>main
+5 KeepCaret =TEditorCaret_KeepCaret>main
+5 LockScroll =TEditorCaret_LockScroll>main
+5 NextLine =TEditorCaret_NextLine>main
+5 PrevSpaceIndent =TEditorCaret_PrevSpaceIndent>main
+5 RowSelect =TEditorCaret_RowSelect>main
+5 SelDragMode =TEditorCaret_SelDragMode>main
+5 SelMove =TEditorCaret_SelMove>main
+5 SoftTab =TEditorCaret_SoftTab>main
+5 Style =TEditorCaret_Style>main
+5 TabIndent =TEditorCaret_TabIndent>main
+5 TabSpaceCount =TEditorCaret_TabSpaceCount>main
+3 TEditorMargin
+4 TEditorMargin =About_TEditorMargin>main
+4 プロパティ
+5 Character =TEditorMargin_Character>main
+5 Left =TEditorMargin_Left>main
+5 Line =TEditorMargin_Line>main
+5 Top =TEditorMargin_Top>main
+3 TEditorMark
+4 TEditorMark =About_TEditorMark>main
+4 プロパティ
+5 Color =TEditorMark_Color>main
+5 Visible =TEditorMark_Visible>main
+3 TEditorMarks
+4 TEditorMarks =About_TEditorMarks>main
+4 プロパティ
+5 EofMark =TEditorMarks_EofMark>main
+5 RetMark =TEditorMarks_RetMark>main
+5 Underline =TEditorMarks_Underline>main
+3 TEditorColor
+4 TEditorColor =About_TEditorColor>main
+4 プロパティ
+5 BkColor =TEditorColor_BkColor>main
+5 Color =TEditorColor_Color>main
+5 Style =TEditorColor_Style>main
+3 TEditorColors
+4 TEditorColors =About_TEditorColors>main
+4 プロパティ
+5 Ank =TEditorColrs_Ank>main
+5 Comment =TEditorColors_Comment>main
+5 DBCS =TEditorColors_DBCS>main
+5 Int =TEditorColors_Int>main
+5 Mail =TEditorColors_Mail>main
+5 Reserve =TEditorColors_Reserve>main
+5 Select =TEditorColors_Select>main
+5 Str =TEditorColors_Str>main
+5 Symbol =TEditorColors_Symbol>main
+5 Url =TEditorColors_Url>main
+4 メソッド
+5 SameBkColor =TEditorColors_SameBkColor>main
+5 SameColor =TEditorColors_SameColor>main
+5 SameStyle =TEditorColors_SameStyle>main
+3 TEditorBracketItem
+4 TEditorBracketItem =About_TEditorBracketItem>main
+4 プロパティ
+5 ItemColor =TEditorBracketItem_ItemColor>main
+5 LeftBracket =TEditorBracketItem_LeftBracket>main
+5 RightBracket =TEditorBracketItem_RightBracket>main
+3 TEditorBracketCollection
+4 TEditorBracketCollection =About_TEditorBracketCollection>main
+4 プロパティ
+5 BracketItems =TEditorBracketCollection_BracketItems>main
+4 メソッド
+5 Add =TEditorBracketCollection_Add>main
+5 SameBkColor =TEditorBracketCollection_SameBkColor>main
+5 SameColor =TEditorBracketCollection_SameColor>main
+5 SameStyle =TEditorBracketCollection_SameStyle>main
+4 イベント
+5 OnChange =TEditorBracketCollection_OnChange>main
+3 TEditorViewInfo
+4 TEditorViewInfo =About_TEditorViewInfo>main
+4 プロパティ
+5 Brackets =TEditorViewInfo_Brackets>main
+5 Colors =TEditorViewInfo_Colors>main
+5 Commenter =TEditorViewInfo_Commenter>main
+5 ControlCode =TEditorViewInfo_ControlCode>main
+5 HexPrefix =TEditorViewInfo_HexPrefix>main
+5 Mail =TEditorViewInfo_Mail>main
+5 Quotation =TEditorViewInfo_Quotation>main
+5 Url =TEditorViewInfo_Url>main
+3 TEditorParser
+4 TEditorParser =About_TEditorParser>main
+4 プロパティ
+5 DrawBracketIndex =TEditorParser_DrawBracketIndex>main
+5 Token =TEditorParser_Token>main
+4 メソッド
+5 Create =TEditorParser_Create>main
+5 CreateWithEditor =TEditorParser_CreateWithEditor>main
+5 NextToken =TEditorParser_NextToken>main
+5 SourcePos =TEditorParser_SourcePos>main
+5 TokenString =TEditorParser_TokenString>main
+4 サンプルコード
+5 Sample =TEditorParser_Sample>main
+3 TEditorWrapOption
+4 TEditorWrapOption =About_TEditorWrapOption>main
+4 プロパティ
+5 FollowRetMark =TEditorWrapOption_FollowRetMark>main
+5 FollowPunctuation =TEditorWrapOption_FollowPunctuation>main
+5 FollowStr =TEditorWrapOption_FollowStr>main
+5 Leading =TEditorWrapOption_Leading>main
+5 LeadStr =TEditorWrapOption_LeadStr>main
+5 PunctuationStr =TEditorWrapOption_PunctuationStr>main
+5 WordBreak =TEditorWrapOption_WordBreak>main
+5 WrapByte =TEditorWrapOption_WrapByte>main
+3 その他のクラス
+4 その他のクラスについて =OtherClass>main
+1 TEditorProp
+2 TEditorProp コンポーネント =About_TEditorProp>main
+2 プロパティ
+3 Color =TEditorProp_Color>main
+3 Caret =TEditorProp_Caret>main
+3 Font =TEditorProp_Font>main
+3 Margin =TEditorProp_Margin>main
+3 Marks =TEditorProp_Marks>main
+3 ReserveWordList =TEditorProp_ReserveWordList>main
+3 ScrollBars =TEditorProp_ScrollBars>main
+3 View =TEditorProp_View>main
+3 WordWrap =TEditorProp_WordWrap>main
+3 WrapOption =TEditorProp_WrapOption>main
+2 メソッド
+3 Assign =TEditorProp_Assign>main
+3 AssignTo =TEditorProp_AssignTo>main
+3 ReadReg =TEditorProp_ReadReg>main
+3 WriteReg =TEditorProp_WriteReg>main
+2 イベント
+3 OnColorChange =TEditorProp_OnColorChange>main
+3 OnScrollBarsChange =TEditorProp_OnScrollBarsChange>main
+3 OnWordWrapChange =TEditorProp_OnWordWrapChange>main
+1 プロパティ・コンポーネントエディタ
+2 コンポーネント・プロパティエディタ =PropertyEditor>main
+1 ver 0.63 からの変更点
+2 削除されたプロパティとメソッド =Deleted>main
+2 変更されたプロパティ =Changed>main
+1 C++Builder での利用について
+2 C++Builder での利用 =About_CppBuider>main
+1 About
+2 謝辞 =Thanks>main
+2 制作・著作・再配布 =Copyright>main
+2 サポート =Support>main
+2 シェアウェア =ShareWare>main
+2 ソースコードについて =SourceCode>main
+2 ファイル構成 =File_Contents>main
+2 コンポーネントのインストール =Install>main
+2 ヘルプファイルのインストール
+3 Delphi IDE へのインストール =Help_Install>main
+3 Delphi 2 =Help_D2>main
+3 Delphi 3 =Help_D3>main
+3 Delphi 4 =Help_D4>main
